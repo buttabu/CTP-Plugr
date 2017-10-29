@@ -11,51 +11,18 @@ import { ReduxAsyncConnect } from 'redux-connect';
 import { AppContainer as HotEnabler } from 'react-hot-loader';
 import { useScroll } from 'react-router-scroll';
 import { getStoredState } from 'redux-persist';
-import localForage from 'localforage';
-import { socket, createApp } from 'app';
 import { Provider } from 'components';
 import createStore from './redux/create';
 import apiClient from './helpers/apiClient';
 import getRoutes from './routes';
-import isOnline from './utils/isOnline';
-
-const offlinePersistConfig = {
-  storage: localForage,
-  whitelist: ['auth', 'info', 'chat']
-};
 
 const client = apiClient();
-const app = createApp();
-const restApp = createApp('rest');
 const dest = document.getElementById('content');
 
-function initSocket() {
-  socket.on('news', data => {
-    console.log(data);
-    socket.emit('my other event', { my: 'data from client' });
-  });
-  socket.on('msg', data => {
-    console.log(data);
-  });
-
-  return socket;
-}
-
-global.socket = initSocket();
-
 (async () => {
-  const storedData = await getStoredState(offlinePersistConfig);
-  const online = await (window.__data ? true : isOnline());
-
-  if (online) {
-    socket.open();
-    await app.authenticate().catch(() => null);
-  }
-
-  const data = !online ? { ...storedData, ...window.__data, online } : { ...window.__data, online };
-  const store = createStore(browserHistory, { client, app, restApp }, data, offlinePersistConfig);
+  const data = {...window.__data };
+  const store = createStore(browserHistory, client, data);
   const history = syncHistoryWithStore(browserHistory, store);
-
   const redirect = bindActionCreators(replace, store.dispatch);
 
   const renderRouter = props => (
@@ -63,8 +30,6 @@ global.socket = initSocket();
       {...props}
       helpers={{
         client,
-        app,
-        restApp,
         redirect
       }}
       filter={item => !item.deferred}
@@ -76,7 +41,7 @@ global.socket = initSocket();
     match({ history, routes }, (error, redirectLocation, renderProps) => {
       ReactDOM.hydrate(
         <HotEnabler>
-          <Provider store={store} app={app} restApp={restApp} key="provider">
+          <Provider store={store} key="provider">
             <Router {...renderProps} render={renderRouter} history={history}>
               {routes}
             </Router>
@@ -117,17 +82,17 @@ global.socket = initSocket();
     );
   }
 
-  if (online && !__DEVELOPMENT__ && 'serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      try {
-        await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
-        console.log('Service worker registered!');
-      } catch (error) {
-        console.log('Error registering service worker: ', error);
-      }
+  // if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
+  //   window.addEventListener('load', async () => {
+  //     try {
+  //       await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
+  //       console.log('Service worker registered!');
+  //     } catch (error) {
+  //       console.log('Error registering service worker: ', error);
+  //     }
 
-      await navigator.serviceWorker.ready;
-      console.log('Service Worker Ready');
-    });
-  }
+  //     await navigator.serviceWorker.ready;
+  //     console.log('Service Worker Ready');
+  //   });
+  // }
 })();

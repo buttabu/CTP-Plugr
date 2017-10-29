@@ -1,6 +1,7 @@
 import async from 'async';
 import isPromise from 'is-promise';
-import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
+import { isLoaded as isAuthLoaded} from 'redux/modules/auth';
+import { load as loadAuth } from '../actions/Auth/actions';
 
 export default function getRoutesUtils(store) {
   async function injectReducerAndRender(reducerPromises, containerPromise) {

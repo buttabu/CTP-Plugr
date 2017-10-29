@@ -24,19 +24,17 @@
   ],
   "main": "bin/server.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
+    "start": "concurrently --kill-others \"npm run start-prod\" ",
     "start-prod": "bnr start-prod",
-    "start-prod-api": "bnr start-prod-api",
-    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\" \"npm run start-dev-api\"",
+    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "start-dev": "bnr start-dev",
-    "start-dev-api": "bnr start-dev-api",
     "watch-client": "bnr watch-client",
     "build": "bnr build",
     "build-dlls": "webpack --colors --display-error-details --config webpack/vendor.config.js",
     "postinstall": "concurrently \"npm run build\" \"npm run build-dlls\"",
     "precommit": "lint-staged",
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc './+(src|api)/**/*.js'",
-    "lint": "eslint -c .eslintrc api src",
+    "lint": "eslint -c .eslintrc src",
     "test": "bnr test",
     "test-node": "bnr test-node",
     "lighthouse-report": "lighthouse http://localhost:8080 --view",
@@ -57,16 +55,8 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
-        "PORT": 8080,
-        "APIPORT": 3030
-      }
-    },
-    "start-prod-api": {
-      "command": "node ./bin/api.js",
-      "env": {
-        "NODE_PATH": "./api",
-        "NODE_ENV": "production",
-        "APIPORT": 3030
+        "PORT": 8080
+        
       }
     },
     "start-dev": {
@@ -74,17 +64,8 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
-        "PORT": 3000,
-        "APIPORT": 3030,
-        "WEBPACK_DLLS": 1
-      }
-    },
-    "start-dev-api": {
-      "command": "node ./bin/api.js",
-      "env": {
-        "NODE_PATH": "./api",
-        "NODE_ENV": "development",
-        "APIPORT": 3030
+        "PORT": 3000
+        
       }
     },
     "watch-client": {
@@ -93,9 +74,8 @@
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
-        "PORT": 3000,
-        "APIPORT": 3030,
-        "WEBPACK_DLLS": 1
+        "PORT": 3000
+
       }
     },
     "build": {
@@ -108,12 +88,6 @@
       "command": "jest src",
       "env": {
         "NODE_PATH": "src"
-      }
-    },
-    "test-node": {
-      "command": "jest api",
-      "env": {
-        "NODE_PATH": "api"
       }
     }
   },

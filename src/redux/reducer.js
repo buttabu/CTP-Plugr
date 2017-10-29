@@ -9,7 +9,6 @@ export default function createReducers(asyncReducers) {
   return {
     routing: routerReducer,
     reduxAsyncConnect,
-    //online: (v = true) => v,
     auth,
     info,
     ...asyncReducers

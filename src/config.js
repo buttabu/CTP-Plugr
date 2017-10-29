@@ -19,7 +19,7 @@ module.exports = Object.assign(
       title: 'Plugr',
       description: 'Plugr: Centralized platform to connect soccer leagues, teams, and players',
       head: {
-        titleTemplate: 'React Redux Example: %s',
+        titleTemplate: 'Plugr: %s',
         meta: [
           { name: 'description', content: 'Plugr: Centralized platform to connect soccer leagues, teams, and players' },
           { charset: 'utf-8' },
