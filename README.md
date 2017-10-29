@@ -39,3 +39,16 @@
 > This bolier template comes from the following repo
 > https://github.com/bertho-zero/react-redux-universal-hot-example 
 > I cleaned it up and simplified it to fit our needs. They have docs about this template, read them when you get a chance.
+
+#### Wireframes for MVP
+
++ Home Page (Landing)
+	+ ![Home Page (Landing)](assets/01-home.png)
++ Leagues Page (Logged Out)
+    + ![Leagues Page (Logged Out)](assets/02-leagues-logged-out.png)
++ Teams Page (Logged Out)
+	+ ![Teams Page (Logged Out)](assets/03-teams-logged-out.png)
++ Leagues Profile
+	+ ![Leagues Profile](assets/04-leagues-profile.png)
++ Teams Profile
+	+ ![Teams Profile](assets/05-teams-profile.png)
