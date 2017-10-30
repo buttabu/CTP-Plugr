@@ -10,14 +10,54 @@ import cookie from 'js-cookie';
 // ============== LOAD ACTION ==============
 // =========================================
 
+function setCookie({ app }) {
+  return async response => {
+    const payload = await app.passport.verifyJWT(response.accessToken);
+    const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
+
+    cookie.set('feathers-jwt', response.accessToken, options);
+  };
+}
+
+function setToken({ client, app, restApp }) {
+  return response => {
+    const { accessToken } = response;
+
+    app.set('accessToken', accessToken);
+    restApp.set('accessToken', accessToken);
+    client.setJwtToken(accessToken);
+  };
+}
+
+function setUser({ app, restApp }) {
+  return response => {
+    app.set('user', response.user);
+    restApp.set('user', response.user);
+  };
+}
+
 export function load() {
   return {
     types: [LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE],
-    promise: (client) => client.get('/api/users/',{
-      authenticated: true,
-    })
+    promise: async ({ app, restApp, client }) => {
+      const response = await restApp.authenticate();
+      await setCookie({ app })(response);
+      setToken({ client, app, restApp })(response);
+      setUser({ app, restApp })(response);
+      return response;
+    }
   };
 }
+
+
+// export function load() {
+//   return {
+//     types: [LOAD_USER_REQUEST, LOAD_USER_SUCCESS, LOAD_USER_FAILURE],
+//     promise: ({client}) => client.get('api/users/',{
+//       authenticated: true,
+//     })
+//   };
+// }
 
 // =============================================
 // ============== REGISTER ACTION ==============
@@ -26,7 +66,7 @@ export function load() {
 export function register(body) {
   return { // body should say {"email":"example@gmail.com", "password1":"abc123", "password2":"abc123"}.
     types: [REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE],
-    promise: (client) => client.post('/api/register/', {
+    promise: (client) => client.post('api/register/', {
       data: body
     })
   };
@@ -39,7 +79,7 @@ export function register(body) {
 export function login(body) {
   return {
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE],
-    promise: (client) => client.post('/api/login/', {
+    promise: (client) => client.post('api/login/', {
       data: body
     })
   };
@@ -52,6 +92,6 @@ export function login(body) {
 export function logout() {
   return {
     types: [LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, LOGOUT_USER_FAILURE],
-    promise: (client) => client.post('/api/logout/')
+    promise: (client) => client.post('api/logout/')
   };
 }

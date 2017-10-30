@@ -8,11 +8,13 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 import Alert from 'react-bootstrap/lib/Alert';
 import Helmet from 'react-helmet';
-
-import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { push } from 'react-router-redux';
 import config from 'config';
 import { asyncConnect } from 'redux-connect';
+
+import { isLoaded as isAuthLoaded } from 'redux/modules/auth';
+import { load as loadAuth, logout } from '../../actions/Auth/actions';
+
 
 @asyncConnect([
   {
@@ -56,6 +58,8 @@ export default class App extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    console.log("\n\nApps componentWillReceiveProps PROPS: ", this.props);
+
     if (!this.props.user && nextProps.user) {
       // login
       const redirect = this.props.router.location.query && this.props.router.location.query.redirect;
@@ -72,6 +76,7 @@ export default class App extends Component {
   };
 
   render() {
+    console.log("\n\nApps PROPS: ", this.props);
     const { user, children } = this.props;
     const styles = require('./App.scss');
 

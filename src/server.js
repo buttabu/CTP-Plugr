@@ -19,18 +19,17 @@ import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import Html from 'helpers/Html';
 import getRoutes from 'routes';
+import { createApp } from 'app';
 
 process.on('unhandledRejection', error => console.error(error));
 
-//might need to fix this to serve our Plugr api
 const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
-
 const pretty = new PrettyError();
 const app = express();
 const server = new http.Server(app);
-
 const proxy = httpProxy.createProxyServer({
   target: targetUrl,
+  changeOrigin: true
   //ws: true
 });
 
@@ -39,10 +38,10 @@ app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.get('/manifest.json', (req, res) => res.sendFile(path.join(__dirname, '..', 'static', 'manifest.json')));
 
-// app.use('/dist/service-worker.js', (req, res, next) => {
-//   res.setHeader('Service-Worker-Allowed', '/');
-//   return next();
-// });
+app.use('/dist/service-worker.js', (req, res, next) => {
+  res.setHeader('Service-Worker-Allowed', '/');
+  return next();
+});
 
 app.use(express.static(path.join(__dirname, '..', 'static')));
 
@@ -85,6 +84,8 @@ app.use((req, res) => {
   }
   const providers = {
     client: apiClient(req),
+    app: createApp(req),
+    restApp: createApp(req)
   };
   const memoryHistory = createHistory(req.originalUrl);
   const store = createStore(memoryHistory, providers);
@@ -155,7 +156,7 @@ if (config.port) {
     if (err) {
       console.error(err);
     }
-    console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiHost);
+    console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort);
     console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
   });
 } else {

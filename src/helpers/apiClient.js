@@ -3,7 +3,6 @@ import config from '../config';
 
 export default function apiClient(req) {
   const instance = axios.create({
-    // Might need to fix baseURL for Plugr API
     baseURL: __SERVER__ ? `http://${config.apiHost}:${config.apiPort}` : '/api'
   });
 
