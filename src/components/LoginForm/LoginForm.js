@@ -1,54 +1,87 @@
-import React, { Component } from 'react';
-import { reduxForm, Field, propTypes, fieldPropTypes } from 'redux-form';
-import loginValidation from './loginValidation';
+ import React, { Component } from 'react';
+import { RenderInput, RenderPasswordInput, RenderSubmitButton } from '../RenderForm/RenderForm';
+import { createValidatorNew } from '../../utils/validation';
+import { Link } from 'react-router';
 
-const Input = ({
-  input, label, type, meta: { touched, error }
-}) => (
-  <div className={`form-group ${error && touched ? 'has-error' : ''}`}>
-    <label htmlFor={input.name} className="col-sm-2">
-      {label}
-    </label>
-    <div className="col-sm-10">
-      <input {...input} type={type} className="form-control" />
-      {error && touched && <span className="glyphicon glyphicon-remove form-control-feedback" />}
-      {error &&
-        touched && (
-          <div className="text-danger">
-            <strong>{error}</strong>
-          </div>
-        )}
-    </div>
-  </div>
-);
-
-Input.propTypes = fieldPropTypes;
-
-@reduxForm({
-  form: 'login',
-  validate: loginValidation
-})
 export default class LoginForm extends Component {
-  static propTypes = {
-    ...propTypes
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errorObject: '',
+      pageFields: '',
+      NullErrorContainer: ''
+    };
+  }
+
+  componentWillMount() {
+    const tempPageFields = {
+      email: ['email', 'required'],
+      password: ['required']
+    };
+    const errorContainer = {};
+    Object.keys(tempPageFields).forEach(key => {
+      errorContainer[key] = { error: null };
+    });
+    this.setState({ errorObject: errorContainer, pageFields: tempPageFields, NullErrorContainer: errorContainer });
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = () => {
+    const fields = this.checkValidation(this.state.pageFields, this.state);
+    const isThereError = this.checkErrorInValidation(fields);
+    if (!isThereError) {
+      const result = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      console.log('RESULT', result);
+      this.props.login(result);
+      // console.log('\n\nSuccess!!!');
+    }
+  };
+
+  checkValidation = (pageFields, stateFields) => {
+    // match against current fields (current formpage fields) and all current states and only check for the current Fields.
+    const formFields = {};
+    Object.keys(pageFields).forEach(fieldName => (formFields[fieldName] = { rule: pageFields[fieldName], value: stateFields[fieldName], error: '' }));
+    return createValidatorNew(formFields); // return the array with error, value, and field validation rule
+  };
+
+  checkErrorInValidation = fields => {
+    if (fields.errorCount === 0) {
+      return false;
+    }
+    this.setState({ errorObject: fields.state }); // altering the errorObj is what triggers the error mssgs on fields.
+    return true;
   };
 
   render() {
-    const { handleSubmit, error } = this.props;
+    console.log('LoginForm PROPS: ', this.props);
+
+    const outerGroupClassName = 'col-sm-12 col-md-12 ';
+    const labelClassName = 'col-sm-12 col-md-12';
+    const inputGroupClassName = 'col-sm-12 col-md-12';
+    const renderRegisterLink = (
+      <Link to="/register">
+        <span>Register</span>
+      </Link>
+    );
 
     return (
-      <form className="form-horizontal" onSubmit={handleSubmit}>
-        <Field name="email" type="text" component={Input} label="Email" />
-        <Field name="password" type="password" component={Input} label="Password" />
-        {error && (
-          <p className="text-danger">
-            <strong>{error}</strong>
-          </p>
-        )}
-        <button className="btn btn-success" type="submit">
-          <i className="fa fa-sign-in" /> Log In
-        </button>
-      </form>
+      <div className="loginform">
+        <h1 className="text-center">Login</h1>
+        
+        <RenderInput label="Email" value={this.state.email} name="email" placeholder="example@gmail.com" error={this.state.errorObject.email.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={labelClassName} inputGroupClassName={inputGroupClassName} />
+        <RenderPasswordInput label="Password" value={this.state.password} name="password" error={this.state.errorObject.password.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={labelClassName} inputGroupClassName={inputGroupClassName} />
+        <RenderSubmitButton outerGroupClassName={outerGroupClassName} buttonClassName="" onClick={this.handleSubmit} label="Login" />
+        <h4>Don't have an account ? {renderRegisterLink} </h4>
+        
+      </div>
     );
   }
 }

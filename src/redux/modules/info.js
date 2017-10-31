@@ -1,6 +1,6 @@
-const LOAD = 'redux-example/info/LOAD';
-const LOAD_SUCCESS = 'redux-example/info/LOAD_SUCCESS';
-const LOAD_FAIL = 'redux-example/info/LOAD_FAIL';
+const LOAD = 'redux-example/LOAD';
+const LOAD_SUCCESS = 'redux-example/LOAD_SUCCESS';
+const LOAD_FAIL = 'redux-example/LOAD_FAIL';
 
 const initialState = {
   loaded: false
@@ -36,10 +36,9 @@ export function isLoaded(globalState) {
   return globalState.info && globalState.info.loaded;
 }
 
-
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: ({ client }) => client.get('/loadInfo')
+    promise: (client) => client.get('/loadInfo')
   };
 }

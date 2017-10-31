@@ -4,6 +4,6 @@
  *  ie: import { CounterButton, InfoBar } from 'components';
  *
  */
- 
+
 export LoginForm from './LoginForm/LoginForm';
-export Provider from './Provider/Provider';
+export HomePage from './HomePage/HomePage';
