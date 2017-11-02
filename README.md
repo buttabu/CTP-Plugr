@@ -3,7 +3,7 @@
 ## CUNY Tech Prep - Section 3 - Football Plugr
 
 ----	
-### Getting started with boiler template:
+### Getting started with the boilerplate code:
 
 
 ----	
@@ -36,7 +36,7 @@
 
 ----
 #### Any questions about the template, hit me up on slack
-> This bolier template comes from the following repo
+> This boilerplate code comes from the following repo
 > https://github.com/bertho-zero/react-redux-universal-hot-example 
 > I cleaned it up and simplified it to fit our needs. They have docs about this template, read them when you get a chance.
 
