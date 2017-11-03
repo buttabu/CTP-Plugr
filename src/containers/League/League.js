@@ -11,9 +11,13 @@ class League extends Component {
 
   render() {
     return (
-      <div className="league">
+      <div className="league container">
         <Helmet title="League" />
-        <LeagueList />
+        <div className="row">
+          <div className="col-md-8">
+            <LeagueList />
+          </div>
+        </div>
       </div>
     );
   }
