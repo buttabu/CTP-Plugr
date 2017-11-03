@@ -15,13 +15,14 @@ import { isLoaded as isAuthLoaded } from 'redux/modules/auth';
 import { load as loadAuth, logout } from '../../actions/Auth/actions';
 
 import '../../helpers/css/app.css';
+import '../../helpers/css/league.css';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
     const promises = [];
-    if (!isAuthLoaded(getState())) {
-      promises.push(dispatch(loadAuth()));
-    }
+    // if (!isAuthLoaded(getState())) {
+    //   promises.push(dispatch(loadAuth()));
+    // }
     return Promise.all(promises);
   }
 }])
