@@ -14,6 +14,7 @@ import { asyncConnect } from 'redux-connect';
 import { isLoaded as isAuthLoaded } from 'redux/modules/auth';
 import { load as loadAuth, logout } from '../../actions/Auth/actions';
 
+import '../../helpers/css/app.css';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
@@ -68,7 +69,7 @@ export default class App extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-                <div className={styles.brand} />
+                <div className={styles.brand} /> {/* {styles.brand} */}
                 <span>Plugr</span>
               </IndexLink>
             </Navbar.Brand>
@@ -117,8 +118,9 @@ export default class App extends Component {
 
         </Navbar>
 
-        <div className={styles.appContent}>
+        <div className={styles.appContent}> {/* {styles.appContent} */}
           {this.props.children}
+        }
         </div>
 
         {/*
