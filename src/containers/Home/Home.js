@@ -14,13 +14,12 @@ class Home extends Component {
   }
 
   render() {
-    const styles = require('./Home.scss');
+    //const styles = require('./Home.scss');
 
     return (
-      <div className={styles.home}>
+      <div className="home"> {/*{styles.home}*/}
         <Helmet title="Home" />
-
-        <div className="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+        <div className="background col-xs-12 col-sm-6 col-md-8 col-lg-8">
           <HomePage />
         </div>
 
