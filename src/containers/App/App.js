@@ -121,7 +121,6 @@ export default class App extends Component {
 
         <div className={styles.appContent}> {/* {styles.appContent} */}
           {this.props.children}
-        }
         </div>
 
         {/*
