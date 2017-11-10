@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 // import {  } from 'components';
 
-export default class LeagueCard extends Component {
+export default class TeamCard extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,12 +10,12 @@ export default class LeagueCard extends Component {
   render() {
     return (
       <div className="col-md-6">
-        <div className="league-card panel panel-default">
+        <div className="team-card panel panel-default">
           <div className="panel-heading">
-            <div className="league-logo text-center">
-                <img src="https://placehold.it/100" alt="League Name" className="img-circle" />
+            <div className="team-logo text-center">
+                <img src="https://placehold.it/100" alt="Team Name" className="img-circle" />
               </div>
-            <h3 className="panel-title"> League Name </h3>
+            <h3 className="panel-title"> Team Name </h3>
           </div>
           <div className="panel-body">
             <p>
