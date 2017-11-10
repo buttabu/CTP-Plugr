@@ -9,7 +9,7 @@ export default class LeagueList extends Component {
   render() {
     return (
       <div className="league-list">
-        <h3>Top Leagues in NYC</h3>
+        <h2>Top Leagues in NYC</h2>
         <LeagueCard />
       </div>
     );
