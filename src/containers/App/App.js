@@ -16,6 +16,7 @@ import { load as loadAuth, logout } from '../../actions/Auth/actions';
 
 import '../../helpers/css/app.css';
 import '../../helpers/css/league.css';
+import '../../helpers/css/team.css';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
