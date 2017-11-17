@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { LeagueList } from 'components';
+import { LeagueList, LeagueTable } from 'components';
 
 class League extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class League extends Component {
         <Helmet title="Leagues" />
         <div className="row">
           <div className="col-md-8">
+            <LeagueTable />
             <LeagueList />
           </div>
         </div>

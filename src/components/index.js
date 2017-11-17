@@ -9,5 +9,6 @@ export LoginForm from './LoginForm/LoginForm';
 export HomePage from './HomePage/HomePage';
 export LeagueList from './LeagueList/LeagueList';
 export LeagueCard from './LeagueCard/LeagueCard';
+export LeagueTable from './LeagueTable/LeagueTable';
 export TeamList from './TeamList/TeamList'
 export TeamCard from './TeamCard/TeamCard'
