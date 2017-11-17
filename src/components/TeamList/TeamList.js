@@ -7,9 +7,12 @@ export default class TeamList extends Component {
   }
 
   render() {
+    
+    const league = "City League";
+
     return (
       <div className="team-list">
-        <h2>Top Teams in NYC</h2>
+        <h2>Top Teams in {league}</h2>
         <TeamCard />
       </div>
     );
