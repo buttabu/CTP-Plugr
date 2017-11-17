@@ -80,9 +80,6 @@ export default class App extends Component {
 
            <Navbar.Collapse>
             <Nav navbar>
-              <LinkContainer to="/systemdemands">
-                <NavItem>System Demands</NavItem>
-              </LinkContainer>
 
               <LinkContainer to="/leagues">
                 <NavItem>Leagues</NavItem>

@@ -8,6 +8,45 @@ export default class LeagueTable extends Component {
   }
   
   render() {
+
+    const mockTeams = [
+      {
+        name: 'CCNY Ballers',
+        gamesPlayed: 1,
+        wins: 1,
+        ties: 0,
+        losses: 0,
+        goalsForAgainst: 5,
+        goalsDifferential: 1.0,
+        points: 30
+      },
+      {
+        name: 'CCNY Ballers',
+        gamesPlayed: 1,
+        wins: 1,
+        ties: 0,
+        losses: 0,
+        goalsForAgainst: 5,
+        goalsDifferential: 1.0,
+        points: 30
+      }
+    ];
+
+    const renderTeamRow = (team) => {
+      return (
+        <tr>
+          <td>{team.name}</td>
+          <td>{team.gamesPlayed}</td>
+          <td>{team.wins}</td>
+          <td>{team.ties}</td>
+          <td>{team.losses}</td>
+          <td>{team.goalsForAgainst}</td>
+          <td>{team.goalsDifferential}</td>
+          <td>{team.points}</td>
+        </tr>
+      );
+    };
+
     return (
       <div className="league-table table-responsive">
         <h2>League Rankings</h2>
@@ -36,26 +75,7 @@ export default class LeagueTable extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>CCNY Ballers</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1.0</td>
-                <td>1.0</td>
-                <td>55</td>
-              </tr>
-              <tr>
-                <td>CCNY Ballers</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>1.0</td>
-                <td>1.0</td>
-                <td>55</td>
-              </tr>
+              {mockTeams.map((team) => renderTeamRow(team))}
             </tbody>
           </table>
         </div>
