@@ -9,6 +9,7 @@ import {
   Register, 
   Account,
   League,
+  LeagueProfile,
   Team
 } from 'containers';
 
@@ -57,6 +58,8 @@ export default (store) => {
       <Route path="register" component={Register} />
 
       <Route path="leagues" component={League} />
+          
+      <Route path="leagues/:leagueName" component={LeagueProfile} />
 
       <Route path="teams" component={Team} />
 
