@@ -52,3 +52,6 @@
 	+ ![Leagues Profile](assets/04-leagues-profile.png)
 + Teams Profile
 	+ ![Teams Profile](assets/05-teams-profile.png)
+
+### Database ER Diagram
+![ER Diagram](assets/plugr_er_diagram.png)
