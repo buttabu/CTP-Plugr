@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { LeagueTable, TeamList } from 'components';
 
-class League extends Component {
+class LeagueProfile extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="league container">
+      <div className="league-profile container">
         <Helmet title="League Name" />
         <div className="row">
           <div className="col-md-8">
@@ -33,11 +33,11 @@ class League extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ }, dispatch)
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(League);
+export default connect(mapStateToProps, mapDispatchToProps)(LeagueProfile);

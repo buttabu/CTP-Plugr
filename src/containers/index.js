@@ -6,3 +6,4 @@ export Account from './Account/Account';
 export League from './League/League';
 export LeagueProfile from './LeagueProfile/LeagueProfile';
 export Team from './Team/Team';
+export TeamProfile from './TeamProfile/TeamProfile';

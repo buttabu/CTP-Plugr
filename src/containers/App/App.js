@@ -14,7 +14,8 @@ import { asyncConnect } from 'redux-connect';
 import { isLoaded as isAuthLoaded } from 'redux/modules/auth';
 import { load as loadAuth, logout } from '../../actions/Auth/actions';
 
-import '../../helpers/css/app.css';
+import '../../helpers/app.css';
+import '../../helpers/css/home.css';
 import '../../helpers/css/league.css';
 import '../../helpers/css/team.css';
 
@@ -60,19 +61,19 @@ export default class App extends Component {
   };
 
   render() {
-    console.log('\n\nApps PROPS: ', this.props);
+    console.log('\n\n ==== Apps PROPS: ', this.props);
     const { user } = this.props;
     const styles = require('./App.scss');
 
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head} />
-        <Navbar fixedTop>
+        <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{ color: '#33e0ff' }}>
-                <div className={styles.brand} /> {/* {styles.brand} */}
-                <span>Plugr</span>
+              <IndexLink to="/" activeStyle={{ color: 'black' }}>
+                <div className={styles.brand} /> {/*  {styles.brand} */}
+                <span>PLUGR</span>
               </IndexLink>
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -90,7 +91,7 @@ export default class App extends Component {
               </LinkContainer>
 
               <LinkContainer to="/athletes">
-                <NavItem>athletes</NavItem>
+                <NavItem>Athletes</NavItem>
               </LinkContainer>
 
               {!user && (
@@ -117,7 +118,7 @@ export default class App extends Component {
 
         </Navbar>
 
-        <div className={styles.appContent}> {/* {styles.appContent} */}
+        <div className="app-content"> {/* {styles.appContent} */}
           {this.props.children}
         </div>
 

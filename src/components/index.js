@@ -10,5 +10,6 @@ export HomePage from './HomePage/HomePage';
 export LeagueList from './LeagueList/LeagueList';
 export LeagueCard from './LeagueCard/LeagueCard';
 export LeagueTable from './LeagueTable/LeagueTable';
-export TeamList from './TeamList/TeamList'
-export TeamCard from './TeamCard/TeamCard'
+export TeamList from './TeamList/TeamList';
+export TeamCard from './TeamCard/TeamCard';
+export Photo from './Photo/Photo';
