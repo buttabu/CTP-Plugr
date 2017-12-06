@@ -63,9 +63,11 @@ export default class LoginForm extends Component {
   render() {
     console.log('LoginForm PROPS: ', this.props);
 
-    const outerGroupClassName = 'col-sm-12 col-md-12 ';
-    const labelClassName = 'col-sm-12 col-md-12';
+    const outerGroupClassName = 'col-sm-12 col-md-12 form-field-area ';
+    const labelClassName = 'col-sm-12 col-md-12 label-title';
     const inputGroupClassName = 'col-sm-12 col-md-12';
+    const outerGroupClassNameButton ="col-sm-3 col-md-3 form-field-area";
+
     const renderRegisterLink = (
       <Link to="/register">
         <span>Register</span>
@@ -76,11 +78,13 @@ export default class LoginForm extends Component {
       <div className="loginform">
         <h1 className="text-center">Login</h1>
         
-        <RenderInput label="Email" value={this.state.email} name="email" placeholder="example@gmail.com" error={this.state.errorObject.email.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={labelClassName} inputGroupClassName={inputGroupClassName} />
-        <RenderPasswordInput label="Password" value={this.state.password} name="password" error={this.state.errorObject.password.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={labelClassName} inputGroupClassName={inputGroupClassName} />
-        <RenderSubmitButton outerGroupClassName={outerGroupClassName} buttonClassName="" onClick={this.handleSubmit} label="Login" />
-        <h4>Don't have an account ? {renderRegisterLink} </h4>
-        
+        <RenderInput label="" value={this.state.email} name="email" placeholder="Email" error={this.state.errorObject.email.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={""} inputGroupClassName={inputGroupClassName} />
+        <RenderPasswordInput label="" value={this.state.password} name="password" placeholder="Password" error={this.state.errorObject.password.error} onChange={this.handleChange} outerGroupClassName={outerGroupClassName} labelClassName={""} inputGroupClassName={inputGroupClassName} />
+        <RenderSubmitButton outerGroupClassName={outerGroupClassNameButton} buttonClassName={"login-btn"} onClick={this.handleSubmit} label="Login" />
+        <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <span>Don't have an account ? {renderRegisterLink} </span>
+        </div>
+
       </div>
     );
   }

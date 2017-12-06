@@ -15,13 +15,13 @@ export const RenderInput = ({label, value, name, placeholder, error, onChange, o
   )
 }
 
-export const RenderPasswordInput = ({label, value, name, error, onChange, outerGroupClassName, labelClassName, inputGroupClassName}) =>{
+export const RenderPasswordInput = ({label, value, name, placeholder, error, onChange, outerGroupClassName, labelClassName, inputGroupClassName}) =>{
   // const error_result = registerValidator(errorType, value)
   return(
     <div className={outerGroupClassName + (error ? ' has-error' : '')}>
       <label className={labelClassName}>{label}</label>
       <div className={inputGroupClassName}>
-        <input type='password' className="form-control" value={value} name={name} onChange={onChange} />
+        <input type='password' placeholder={placeholder} className="form-control" value={value} name={name} onChange={onChange} />
         {error && <div className="text-danger">{error}</div>}
       </div>
 

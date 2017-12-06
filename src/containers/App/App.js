@@ -18,6 +18,8 @@ import '../../helpers/app.css';
 import '../../helpers/css/home.css';
 import '../../helpers/css/league.css';
 import '../../helpers/css/team.css';
+import '../../helpers/css/login.css';
+import '../../helpers/css/register.css';
 
 @asyncConnect([{
   promise: ({ store: { dispatch, getState } }) => {
