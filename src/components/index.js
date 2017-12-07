@@ -13,3 +13,4 @@ export LeagueTable from './LeagueTable/LeagueTable';
 export TeamList from './TeamList/TeamList';
 export TeamCard from './TeamCard/TeamCard';
 export Photo from './Photo/Photo';
+export AccountPage from './AccountPage/AccountPage';

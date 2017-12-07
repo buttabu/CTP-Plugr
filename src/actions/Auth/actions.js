@@ -25,10 +25,10 @@ export function load() {
 
 export function register(body) {
   return {
-    // body should say {"email":"example@gmail.com", "password1":"abc123", "password2":"abc123"}.
     types: [REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE],
-    promise: client => client.post('api/register/', {
-        data: body
+    promise: client => client.post('api/plugr/auth/register/', {
+        data: body,
+        authenticated: true,
     })
   };
 }
@@ -40,8 +40,9 @@ export function register(body) {
 export function login(body) {
   return {
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE],
-    promise: (client) => client.post('api/plugr/login/', {
-      data: body
+    promise: (client) => client.post('api/plugr/auth/login/', {
+      data: body,
+      authenticated: true,
     })
   };
 }

@@ -22,14 +22,14 @@ class Register extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log('\n\ncomponentWillReceiveProps REGISTER: ', nextProps);
-    //if(nextProps.auth.user == null && nextProps.auth.isLoaded){
-      if(nextProps.auth.error){
-        this.setState({ errorObject: {password: {error: nextProps.auth.error.error}, email: {error: nextProps.auth.error.error} } })
-      }
-    //}
-  } 
+  // componentWillReceiveProps(nextProps){
+  //   console.log('\n\ncomponentWillReceiveProps REGISTER: ', nextProps);
+  //   //if(nextProps.auth.user == null && nextProps.auth.isLoaded){
+  //     // if(nextProps.auth.error){
+  //     //   this.setState({ errorObject: {password: {error: nextProps.auth.error.error}, email: {error: nextProps.auth.error.error} } })
+  //     // }
+  //   //}
+  // } 
 
   componentWillMount() {
     const tempPageFields = {
@@ -67,14 +67,14 @@ class Register extends Component {
     const isThereError = this.checkErrorInValidation(fields);
     if (!isThereError) {
       const result = {
-        firstname: this.state.firstName,
-        lastname: this.state.lastName,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password,
-        credential: this.state.credential.value
+        usertype: this.state.credential.value
       };
       console.log('RESULT', result);
-      //this.props.actions.register(result);
+      this.props.actions.register(result);
       console.log('\n\nSuccess!!!');
     }
   }
@@ -97,13 +97,14 @@ class Register extends Component {
   }
 
   render() {
+    console.log(" ==== REGISTER PROPS", this.props);
     const outerGroupClassName = 'col-sm-12 col-md-12 form-field-area ';
     const labelClassName = 'col-sm-12 col-md-12';
     const inputGroupClassName = 'col-sm-12 col-md-12';
     const outerGroupClassNameButton ="col-sm-3 col-md-3 form-field-area";
-    const credentialOptions = [ {label:'Player', value:'player', name:'credential'}, 
-      {label:'Team', value:'team', name:'credential'},
-      {label:'League Organizer', value:'league', name:'credential'}];
+    const credentialOptions = [ {label:'Player', value:'p', name:'credential'}, 
+      {label:'Team', value:'t', name:'credential'},
+      {label:'League Organizer', value:'l', name:'credential'}];
 
     return (
       <div className="container register">  
@@ -125,7 +126,9 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ register }, dispatch)
 });
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
 
