@@ -9,11 +9,25 @@ class TeamProfile extends Component {
     super(props);
   }
 
+
+
   render() {
     return (
       <div className="team-profile container">
         <Helmet title="Team Name" />
         <span>Team Profile Here</span>
+
+        <div className="jumbotron">
+          <h1>Hello, World</h1>
+          <p>
+          This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+          </p>
+          <p>
+            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </p>
+        </div>
+        <span>Team Profile Here</span>
+
       </div>
     );
   }
