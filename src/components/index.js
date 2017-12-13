@@ -12,5 +12,8 @@ export LeagueCard from './LeagueCard/LeagueCard';
 export LeagueTable from './LeagueTable/LeagueTable';
 export TeamList from './TeamList/TeamList';
 export TeamCard from './TeamCard/TeamCard';
+export AthleteList from './AthleteList/AthleteList';
+export AthleteCard from './AthleteCard/AthleteCard';
 export Photo from './Photo/Photo';
 export AccountPage from './AccountPage/AccountPage';
+

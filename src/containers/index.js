@@ -7,3 +7,4 @@ export League from './League/League';
 export LeagueProfile from './LeagueProfile/LeagueProfile';
 export Team from './Team/Team';
 export TeamProfile from './TeamProfile/TeamProfile';
+export Athlete from './Athlete/Athlete';

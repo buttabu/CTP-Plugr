@@ -1,12 +1,12 @@
 /* ====================================== */
-/* ============= LEAGUE CSS ============= */
+/* ============= ATHLETE CSS ============= */
 /* ====================================== */
 
 /* ============= HEADER ============= */
 
-.league-header{
+.athlete-header{
   height: 400px;
-  background-color: #2996cc;
+  /*background-color: #2996cc;*/
   margin-top: -75px;
 }
 
@@ -16,26 +16,26 @@
   color: white;
 }
 
-.header-image{
+.a-header-image{
   padding-right: 0px;
 }
 
-.header-item p{
+/*.header-item p{
   letter-spacing: 2px;
-}
+}*/
 
-.league-photo{
+.athlete-photo{
   height: 399px;
   width: 100%;
   object-fit: cover;
   overflow: hidden;
 }
 
-.league-photo .img-responsive{
-  margin-top: -100px;
+.athlete-photo .img-responsive{
+  margin-top: -240px;
 }
 
-.league-register-btn{
+.athlete-register-btn{
   display: inline-block;
   border-radius: 3px;
   border: none;
@@ -49,3 +49,18 @@
   width: 250px;
   padding: 15px 0;
 }
+
+.athlete-message{
+  position: absolute;
+  top: 20%;
+  left: 1%;
+  border: 3px solid white;
+  color: white;
+  border-radius: 11px;
+  padding: 20px;
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 32px;
+  background-color: #00000074;
+}
+

@@ -9,8 +9,6 @@ class TeamProfile extends Component {
     super(props);
   }
 
-
-
   render() {
     return (
       <div className="team-profile container">
@@ -42,7 +40,7 @@ class TeamProfile extends Component {
           This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
           </p>
           <p>
-            <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a className="btn btn-primary btn-lg" href="/teams/profile/1" role="button">Learn more</a>
           </p>
         </div>
         <span>Team Profile Here</span>

@@ -17,6 +17,7 @@ import { load as loadAuth, logout } from '../../actions/Auth/actions';
 import '../../helpers/app.css';
 import '../../helpers/css/home.css';
 import '../../helpers/css/league.css';
+import '../../helpers/css/athlete.css';
 import '../../helpers/css/team.css';
 import '../../helpers/css/login.css';
 import '../../helpers/css/register.css';
@@ -77,7 +78,7 @@ export default class App extends Component {
             <Navbar.Brand>
               <IndexLink to="/" activeStyle={{ color: 'black' }}>
                 <div className={styles.brand} /> {/*  {styles.brand} */}
-                <span>PLUGR</span>
+                <span>SPORTA</span>
               </IndexLink>
             </Navbar.Brand>
             <Navbar.Toggle />

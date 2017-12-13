@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { LeagueCard } from 'components';
+import { AthleteCard } from 'components';
 
-export default class LeagueList extends Component {
+export default class AthleteList extends Component {
   constructor(props) {
     super(props);
   }
@@ -9,11 +9,12 @@ export default class LeagueList extends Component {
   render() {
     let container = []
     for (let i=0; i < 6; i++){
-      container.push(<LeagueCard />)
+      container.push(<AthleteCard />)
     }
+
     return (
-      <div className="container league-list">
-        <h2>Top Leagues in NYC</h2>
+      <div className="container athlete-list">
+        <h2>Top Athletes in NYC</h2>
         {container}
       </div>
     );

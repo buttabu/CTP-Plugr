@@ -6,7 +6,7 @@
 
 .background{
   overflow: hidden;
-  margin-top: -240px;
+  margin-top: -215px;
   width: 100%;
   display:inline-block;
   /*background: -moz-linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.95) 100%); FF3.6+ */
@@ -60,8 +60,8 @@
     text-align: center;
     cursor: pointer;
     color: #fff;
-    /*background-color: #2996cc; ALSO GOOD COLOR FOR BUTTONS*/
-    background-color: #008000;
+    background-color: #2996cc; 
+    /*background-color: #008000;*/ /*ALSO GOOD COLOR FOR BUTTONS*/
     width: 250px;
     padding: 15px 0px;
 }

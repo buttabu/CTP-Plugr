@@ -44,7 +44,7 @@ class Home extends Component {
 
         <div className="register-plugr">
           <Link to="/register">
-            <span className="plugr-btn">REGISTER WITH PLUGR</span>
+            <span className="plugr-btn">REGISTER WITH SPORTA</span>
           </Link>
         </div>
 

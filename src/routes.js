@@ -8,6 +8,7 @@ import {
   NotFound,
   Register, 
   Account,
+  Athlete,
   Team,
   League,
   TeamProfile,
@@ -57,9 +58,10 @@ export default (store) => {
 
       {/* Routes */}
       <Route path="leagues" component={League} />
-      <Route path="leagues/:leagueName" component={LeagueProfile} />
+      <Route path="leagues/profile/:leagueName" component={LeagueProfile} />
       <Route path="teams" component={Team} />
-      <Route path="teams/:teamProfile" component={TeamProfile} />
+      <Route path="teams/profile/:teamProfile" component={TeamProfile} />
+      <Route path="athletes" component={Athlete} />
       <Route path="register" component={Register} />
 
       {/* Catch all route */}
