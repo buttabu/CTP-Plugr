@@ -5,7 +5,7 @@ dist/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-.happypack
+.happypack/
 webpack/dlls/*.json
 .scratch
 src/containers/.DS_Store

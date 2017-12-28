@@ -1,6 +1,27 @@
 import React from 'react';
 import Select from 'react-select';
 
+// ===============================
+// ====== REDUX RENDER FROM ======
+// ===============================
+
+export const ReduxRenderInput = ({field, label, type = 'text'}) => {
+  return(
+    <div className={`form-group ${field.error && field.touched ? 'has-error' : ''}`}>
+      <label className="col-sm-12 col-md-12">{label}</label>
+      <div className="col-sm-12 col-md-12">
+        <input type={type} className="form-control" name={field.name} {...field} />
+        {field.error && field.touched && <span className="glyphicon glyphicon-remove form-control-feedback"></span>}
+        {field.error && field.touched && <div className="text-danger"><strong>{field.error}</strong></div>}
+      </div>
+    </div>
+  );
+}
+
+// ===============================
+// ====== REACT RENDER FORM ======
+// ===============================
+
 export const RenderInput = ({label, value, name, placeholder, error, onChange, outerGroupClassName, labelClassName, inputGroupClassName}) =>{
   // const error_result = registerValidator(errorType, value)
   return(
