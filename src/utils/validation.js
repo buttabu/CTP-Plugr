@@ -8,14 +8,16 @@ export function email(value) {
   if (!isEmpty(value) && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
     return 'Invalid email address ';
   }
-  else{ return '';}
+  else
+    return '';
 }
 
 export function required(value) {
   if (isEmpty(value)) {
     return 'Required';
   }
-  else{ return '';}
+  else
+    return '';
 }
 
 export function minLength(min) {
@@ -23,7 +25,8 @@ export function minLength(min) {
     if (!isEmpty(value) && value.length < min) {
       return `Must be at least ${min} characters `;
     }
-    else{ return '';}
+    else
+      return '';
   };
 }
 
@@ -32,7 +35,8 @@ export function maxLength(max) {
     if (!isEmpty(value) && value.length > max) {
       return `Must be no more than ${max} characters `;
     }
-    else{ return '';}
+    else
+      return '';
   };
 }
 
@@ -40,7 +44,8 @@ export function integer(value) {
   if (!Number.isInteger(Number(value))) {
     return 'Must be an integer ';
   }
-  else{ return '';}
+  else
+    return '';
 }
 
 export function oneOf(enumeration) {
@@ -48,34 +53,46 @@ export function oneOf(enumeration) {
     if (!~enumeration.indexOf(value)) {
       return `Must be one of: ${enumeration.join(', ')} `;
     }
-    else{ return '';}
+    else
+      return '';
   };
 }
 
 // NEW MATCH FUNCTION
-export function match(target, value){
-  if(isEmpty(value)){
-    return 'Required';
-  }
-  if (!isEmpty(value) && value!==target){
-    return 'Do not match ';
-  }
-  else{ return '';} 
-
+export function match(target){
+  return value => { 
+    if(isEmpty(value))
+      return 'Required';
+    if (!isEmpty(value) && value!==target)
+      return 'Do not match ';
+    else
+      return ''; 
+  };
 }
+
+// export function match(target, value){
+//   if(isEmpty(value))
+//     return 'Required';
+//   if (!isEmpty(value) && value!==target)
+//     return 'Do not match ';
+//   else
+//     return ''; 
+// }
 
 export function checkbox(value){
   if(!value){
     return 'check required';
   }
-  else{ return '';}
+  else
+    return '';
 }
 
 export function minInteger(target, value){
   if(value<target){
     return 'Not the minimum amount allowed';
   }
-  else { return '';}
+  else 
+    return '';
 }
 
 //function from boiler plate
