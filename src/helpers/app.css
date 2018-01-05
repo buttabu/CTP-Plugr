@@ -51,23 +51,25 @@ div, span, body, label, h1, h2, h3, h4 {
 }
 
 .navbar-nav {
-  background-color: #00000054;
+  /*background-color: #00000054;*/
+  background-color: transparent;
 }
 
 .navbar{
   z-index: 10;
+  border: none;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   background-color: transparent;
   border-bottom: 2px solid white;
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     background-color: transparent;
 }
 

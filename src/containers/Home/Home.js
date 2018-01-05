@@ -33,24 +33,19 @@ class Home extends Component {
   }
 
   render() {
-    //const styles = require('./Home.scss');
-    console.log(" ==== PROPS IN HOME: ", this.props);
-    console.log(" ==== STATE IN HOME: ", this.state);
     return (
-      <div className="home"> {/*{styles.home}*/}
+      <div className="home">
         <Helmet title="Home" />
         
         <HomePage height={this.state.height} width={this.state.width}/>
 
-        <div className="register-plugr">
+        <div className="register-sporta">
           <Link to="/register">
-            <span className="plugr-btn">REGISTER WITH SPORTA</span>
+            <span className="sporta-btn">REGISTER WITH SPORTA</span>
           </Link>
         </div>
 
-        <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <LoginForm {...this.props.actions} />
-        </div>
+        <LoginForm outerClassName={"col-xs-12 col-sm-6 col-md-4 col-lg-4"} {...this.props.actions} />
 
       </div>
     );

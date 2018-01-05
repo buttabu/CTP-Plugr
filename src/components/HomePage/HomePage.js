@@ -18,7 +18,7 @@ export default class HomePage extends Component {
 
         <Photo className="background" photoClassName="background-photo" src={tempIMG} parentsHeight={height} />
         
-        <div className="plugr-message col-xs-12 col-sm-12 col-md-5 col-lg-5" style={{top: messageHeight + 'px'}}>
+        <div className="sporta-message col-xs-10 col-sm-10 col-md-5 col-lg-5" style={{top: messageHeight + 'px'}}>
           <span>A Centralized Platform to Connect Leagues, Teams and Players</span>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import validate from './RegisterValidation';
-import { ReduxRenderInput, ReduxRenderSelect } from 'utils/renderform';
+import { RenderInput, RenderSelect, RenderButton } from 'utils/renderform';
 import { Link } from 'react-router';
 
 class RegisterForm extends Component{
@@ -11,9 +11,9 @@ class RegisterForm extends Component{
 
   handleSubmit = (values) =>{
     //values.preventDefault()
+    console.log("RegisterForm VALUES:", values);
     this.props.resetForm();
     //this.props.register(values);
-    console.log("RegisterForm VALUES:", values);
   }
 
   render(){
@@ -28,15 +28,15 @@ class RegisterForm extends Component{
     return(
       <div className="register-form col-sm-12 col-md-6 col-md-offset-3">
         <form onSubmit={handleSubmit(this.handleSubmit)}>
-          <ReduxRenderSelect field={credential} value={credential.value} options={credentialOptions} labelClassName={mdsm_12} label={"Who are you?"} inputClassName={mdsm_12} {...credential}/>
-          <ReduxRenderInput field={firstname} labelClassName={mdsm_12} label={"First Name"} inputClassName={mdsm_12} />
-          <ReduxRenderInput field={lastname} labelClassName={mdsm_12} label={"Last Name"} inputClassName={mdsm_12} />
-          <ReduxRenderInput field={username} labelClassName={mdsm_12} label={"username"} inputClassName={mdsm_12} />
-          <ReduxRenderInput field={email} labelClassName={mdsm_12} label={"Email"} inputClassName={mdsm_12} />
-          <ReduxRenderInput field={password} labelClassName={mdsm_12} label={"Password"} inputClassName={mdsm_12} type={"password"} />
-          <ReduxRenderInput field={confirmpassword} labelClassName={mdsm_12} label={"Confirm Password"} inputClassName={mdsm_12} type={"password"} />
+          <RenderSelect field={credential} value={credential.value} options={credentialOptions} labelClassName={mdsm_12} label={"Who are you?"} inputClassName={mdsm_12} {...credential}/>
+          <RenderInput field={firstname} labelClassName={mdsm_12} label={"First Name"} inputClassName={mdsm_12} />
+          <RenderInput field={lastname} labelClassName={mdsm_12} label={"Last Name"} inputClassName={mdsm_12} />
+          <RenderInput field={username} labelClassName={mdsm_12} label={"username"} inputClassName={mdsm_12} />
+          <RenderInput field={email} labelClassName={mdsm_12} label={"Email"} inputClassName={mdsm_12} />
+          <RenderInput field={password} labelClassName={mdsm_12} label={"Password"} inputClassName={mdsm_12} type={"password"} />
+          <RenderInput field={confirmpassword} labelClassName={mdsm_12} label={"Confirm Password"} inputClassName={mdsm_12} type={"password"} />
           {error && <p className="text-danger"><strong>{error}</strong></p>}
-          <button type="submit">Submit</button>
+          <RenderButton className={mdsm_12} buttonClassName={""} label={"Submit"} />
         </form>
       </div>
     )
